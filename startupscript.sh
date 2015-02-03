@@ -15,13 +15,13 @@
  ### END INIT INFO
  
  #Settings
- SERVICE='red.js'
+ SERVICE='EnergyMeterPulsReaderMQTT.py'
  OPTIONS=''
  USERNAME='iot'
- APP_PATH="/home/$USERNAME/node-red"
+ APP_PATH="/home/$USERNAME/repos/RPI-EEM"
  HISTORY=1024
- NODE="/home/$USERNAME/.nvm/v0.8.22/bin/node"
- INVOCATION="$NODE $SERVICE" 
+ NAME='eem'
+ INVOCATION="python $SERVICE" 
  ME=`whoami`
  
  as_user() {
@@ -39,7 +39,7 @@
    else
      echo "Starting $SERVICE..."
      cd $APP_PATH
-     as_user "cd $APP_PATH && screen -h $HISTORY -dmS nodered $INVOCATION"
+     as_user "cd $APP_PATH && screen -h $HISTORY -dmS $NAME $INVOCATION"
      sleep 7
      if pgrep -u $USERNAME -f $SERVICE > /dev/null
      then
