@@ -76,10 +76,10 @@ class EnergyLogger(mosquitto.Mosquitto):
 
 		topic = self.prefix+"/"+sub_topic
 
-        msg = json.dumps({"time":timestamp,"value":power})
+        	msg = json.dumps({"time":timestamp,"value":power})
 
 		#print "New event: " + topic
-        self.publish(topic,msg,1)
+        	self.publish(topic,msg,1)
 		
 		return
 
