@@ -72,7 +72,7 @@ class EnergyLogger(mosquitto.Mosquitto):
 		return
 
 	#Posting data to couchDB  
-	def Update(self,sub_topic,value,timestamp = time.time()):
+	def Update(self,sub_topic,value,timestamp = time()):
 
 		topic = self.prefix+"/"+sub_topic
 
