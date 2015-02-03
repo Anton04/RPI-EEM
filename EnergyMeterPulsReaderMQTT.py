@@ -54,7 +54,7 @@ class EnergyLogger(mosquitto.Mosquitto):
 		self.will_set( topic = "system/" + self.prefix, payload="Offline", qos=1, retain=True)
 
 		if user != None:
-    		self.username_pw_set(user,password)
+    			self.username_pw_set(user,password)
 
 		self.connect(server,keepalive=10)
 		self.publish(topic = "system/"+ self.prefix, payload="Online", qos=1, retain=True)
