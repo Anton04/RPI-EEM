@@ -136,9 +136,13 @@ class EnergyLogger(mosquitto.Mosquitto):
     		Energy = self.Counter * self.Factor
     		Power = self.Factor / (Period / 3600000.0) # The energy divided on the time in hours.
     		Delta = fabs(Power - self.LastPower)
+		
+		print "Period is: %.2f s \nPower is: %.2f W\nEnergy: %.2f kWh\nChange: %.2f " % (Period,Power,Energy,Delta)
+		print " "
 
 		if Delta > self.error_threshhold:
 			print "Interference detected"
+			print " "
 			return
 
 
