@@ -11,11 +11,6 @@ import base64
 from math import fabs
 import mosquitto
 
-config = {
-      'user': 'spsensors',
-      'password': 'BuCSlvWpl8reZP3R',
-      'server': 'livinglab.powerprojects.se:6984'
-      }
 
 
 #Functions
@@ -50,7 +45,7 @@ class EnergyLogger(mosquitto.Mosquitto):
 		self.prefix = prefix
 
 		#Init and connect to MQTT server
-		mosquitto.Mosquitto.__init__(self,self.config['clientId'])
+		mosquitto.Mosquitto.__init__(self,client)
 		self.will_set( topic = "system/" + self.prefix, payload="Offline", qos=1, retain=True)
 
 		if user != None:
