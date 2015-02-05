@@ -24,7 +24,7 @@ class EnergyLogger(mosquitto.Mosquitto):
 
 	def __init__(self,pin=23,user = "driver", password="1234",server = "localhost", prefix = "MainMeter",client = "EnergyLogger"):
 
-		self.Factor = 1 # kWh per pulse
+		self.Factor = 0.01 # kWh per pulse
 		self.Threshhold = 10.0
 		self.SentThreshhold = None
 	
