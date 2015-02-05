@@ -34,7 +34,7 @@ class EnergyLogger(mosquitto.Mosquitto):
 		self.Falling = 0.0
 		self.LastPower = 0.0
 
-		self.error_threshhold = 100
+		self.error_threshhold = 70000
 
 		self.pulse_lenght = 0.080 
 		self.pulse_lenght_max_dev = 0.0005
