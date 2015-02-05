@@ -88,17 +88,7 @@ class EnergyLogger(mosquitto.Mosquitto):
 
 		return
 
-	# now we'll define two threaded callback functions
-	# these will run in another thread when our events are detected
-	def my_callback(self,channel):
-    		print "%s falling edge detected on 17" % CurrentTime()
-		return
 
-	def my_callback3(self,channel):
-		self.falling = time()
-
-		print "%s falling edge detected on %s" % (CurrentTime(),str(self.pin))
-		return
 
 	def my_callback2(self,channel):
 
