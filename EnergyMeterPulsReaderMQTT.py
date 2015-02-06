@@ -98,7 +98,7 @@ class EnergyLogger(mosquitto.Mosquitto):
 
 	def SendIOEvent(self,timestamp,Period,Counter,PulseLenght):
 		topic = self.prefix+"/ioevent"
-		msg = json.dumps({"time":timestamp,"counter":counter,"period":period,"pulselenght":pulselenght})
+		msg = json.dumps({"time":timestamp,"counter":Counter,"period":Period,"pulselenght":PulseLenght})
 		self.publish(topic,msg,1)
 		return
 
