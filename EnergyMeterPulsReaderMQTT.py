@@ -50,6 +50,9 @@ class EnergyLogger(mosquitto.Mosquitto):
 
 		if user != None:
     			self.username_pw_set(user,password)
+    			
+    		self.on_connect = self.mqtt_on_connect
+    		self.on_message = self.mqtt_on_message
 
 		self.connect(server,keepalive=10)
 		self.publish(topic = "system/"+ self.prefix, payload="Online", qos=1, retain=True)
@@ -62,7 +65,7 @@ class EnergyLogger(mosquitto.Mosquitto):
 		# when a falling or rising edge is detected on port self.pin, call callback2
 		GPIO.add_event_detect(self.pin, GPIO.BOTH, callback=self.my_callback2, bouncetime=0)
 
-
+		self.loop_start()
 
 		return
 
@@ -158,6 +161,15 @@ class EnergyLogger(mosquitto.Mosquitto):
 			print "Updating..."
 			self.SendMeterEvent(str(TimeStamp),str(Power),str(Energy),str(self.Threshhold))
 		return
+	
+	def mqtt_on_connect(self, selfX,mosq, result):
+    		print "MQTT connected!"
+    		self.subscribe(self.prefix + "/#", 0)
+    
+  	def mqtt_on_message(self, selfX,mosq, msg):
+    		print("RECIEVED MQTT MESSAGE: "+msg.topic + " " + str(msg.payload))
+    	
+    		return
 
 
 if __name__ == "__main__":
