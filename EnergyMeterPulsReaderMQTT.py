@@ -168,7 +168,7 @@ class EnergyLogger(mosquitto.Mosquitto):
 
 		if Delta > self.Threshhold: 
 			print "Updating..."
-			counter,period,pulselenght
+			
 			self.SendMeterEvent(str(TimeStamp),str(Power),str(Energy),str(self.Threshhold))
 			self.SendIOEvent(str(Period),str(self.Counter),str(PulseLenght))
 		return
