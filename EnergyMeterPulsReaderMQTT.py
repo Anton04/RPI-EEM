@@ -81,7 +81,7 @@ class EnergyLogger(mosquitto.Mosquitto):
 		
 		return
 
-	def SendMeterEvent(self,timestamp,power,counter,period,pulselenght,threshhold):
+	def SendMeterEvent(self,timestamp,power,counter,threshhold):
 		#self.Update("power",power,timestamp)
 		#self.Update("counter",counter,timestamp)
 		
