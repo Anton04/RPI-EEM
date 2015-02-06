@@ -81,13 +81,13 @@ class EnergyLogger(mosquitto.Mosquitto):
 		
 		return
 
-	def SendMeterEvent(self,timestamp,power,counter,threshhold):
+	def SendMeterEvent(self,timestamp,power,energy,threshhold):
 		#self.Update("power",power,timestamp)
 		#self.Update("counter",counter,timestamp)
 		
 		topic = self.prefix+"/meterevent"
 		
-		msg = json.dumps({"time":timestamp,"power":power})
+		msg = json.dumps({"time":timestamp,"power":power,"energy":energy})
 
 		self.publish(topic,msg,1)
 		#if self.SentThreshhold != self.Threshhold:
