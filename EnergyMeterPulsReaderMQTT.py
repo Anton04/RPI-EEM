@@ -81,17 +81,26 @@ class EnergyLogger(mosquitto.Mosquitto):
 		
 		return
 
-	def SendMeterEvent(self,timestamp,power,counter,threshhold):
-		self.Update("power",power,timestamp)
-		self.Update("counter",counter,timestamp)
+	def SendMeterEvent(self,timestamp,power,counter,period,pulselenght,threshhold):
+		#self.Update("power",power,timestamp)
+		#self.Update("counter",counter,timestamp)
+		
+		topic = self.prefix+"/meterevent"
+		
+		msg = json.dumps({"time":timestamp,"power":power})
 
-		if self.SentThreshhold != self.Threshhold:
-			self.Update("threshhold",threshhold,timestamp)
-			self.SentThreshhold = self.Threshhold
+		self.publish(topic,msg,1)
+		#if self.SentThreshhold != self.Threshhold:
+		#	self.Update("threshhold",threshhold,timestamp)
+		#	self.SentThreshhold = self.Threshhold
 
 		return
 
-
+	def SendIOEvent(self,Period,Counter,PulseLenght):
+		topic = self.prefix+"/ioevent"
+		msg = json.dumps({"time":timestamp,"power":power,"counter":counter,"period":period,"pulselenght":pulselenght})
+		self.publish(topic,msg,1)
+		return
 
 	def my_callback2(self,channel):
 
@@ -159,7 +168,9 @@ class EnergyLogger(mosquitto.Mosquitto):
 
 		if Delta > self.Threshhold: 
 			print "Updating..."
+			counter,period,pulselenght
 			self.SendMeterEvent(str(TimeStamp),str(Power),str(Energy),str(self.Threshhold))
+			self.SendIOEvent(str(Period),str(Counter),str(PulseLenght))
 		return
 	
 	def mqtt_on_connect(self, selfX,mosq, result):
