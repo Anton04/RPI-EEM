@@ -96,9 +96,9 @@ class EnergyLogger(mosquitto.Mosquitto):
 
 		return
 
-	def SendIOEvent(self,Period,Counter,PulseLenght):
+	def SendIOEvent(self,timestamp,Period,Counter,PulseLenght):
 		topic = self.prefix+"/ioevent"
-		msg = json.dumps({"time":timestamp,"power":power,"counter":counter,"period":period,"pulselenght":pulselenght})
+		msg = json.dumps({"time":timestamp,"counter":counter,"period":period,"pulselenght":pulselenght})
 		self.publish(topic,msg,1)
 		return
 
@@ -170,7 +170,7 @@ class EnergyLogger(mosquitto.Mosquitto):
 			print "Updating..."
 			
 			self.SendMeterEvent(str(TimeStamp),str(Power),str(Energy),str(self.Threshhold))
-			self.SendIOEvent(str(Period),str(self.Counter),str(PulseLenght))
+			self.SendIOEvent(str(TimeStamp),str(Period),str(self.Counter),str(PulseLenght))
 		return
 	
 	def mqtt_on_connect(self, selfX,mosq, result):
