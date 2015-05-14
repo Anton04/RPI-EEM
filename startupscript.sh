@@ -17,8 +17,8 @@
  #Settings
  SERVICE='EnergyMeterPulsReaderMQTT.py'
  OPTIONS=''
- USERNAME='iot'
- APP_PATH="/home/$USERNAME/repos/RPI-EEM"
+ USERNAME='root'
+ APP_PATH="/home/iot/repos/RPI-EEM"
  HISTORY=1024
  NAME='eem'
  INVOCATION="python $SERVICE" 
