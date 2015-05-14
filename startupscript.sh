@@ -1,18 +1,18 @@
- #!/bin/bash
- # /etc/init.d/nodered
- # version 0.3.9 2014-10-25 (YYYY-MM-DD)
+#!/bin/bash
+# /etc/init.d/eem
+# version 1 2015-05-10 (YYYY-MM-DD)
  
- ### BEGIN INIT INFO
- # Provides:   EEM
- # Required-Start: $local_fs $remote_fs screen-cleanup
- # Required-Stop:  $local_fs $remote_fs
- # Should-Start:   $network
- # Should-Stop:    $network
- # Default-Start:  2 3 4 5
- # Default-Stop:   0 1 6
- # Short-Description:    Start nodered
- # Description:    Starts the NodeRED server
- ### END INIT INFO
+### BEGIN INIT INFO
+# Provides:   EEM
+# Required-Start: $local_fs $remote_fs screen-cleanup
+# Required-Stop:  $local_fs $remote_fs
+# Should-Start:   $network
+# Should-Stop:    $network
+# Default-Start:  2 3 4 5
+# Default-Stop:   0 1 6
+# Short-Description:    Electric meter monitor
+# Description:    Starts Electric meter monitor
+### END INIT INFO
  
  #Settings
  SERVICE='EnergyMeterPulsReaderMQTT.py'
